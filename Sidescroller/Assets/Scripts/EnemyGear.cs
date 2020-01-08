@@ -34,6 +34,8 @@ public class EnemyGear : MonoBehaviour
     private float attackLength = 1;
     private float attackStart = -10f;
 
+    private bool attacking = false;
+
     private void Start()
     {
         seeker = GetComponent<Seeker>();
@@ -84,6 +86,7 @@ public class EnemyGear : MonoBehaviour
         {
             // ends attack
             attackStart -= 2;
+            attacking = false;
 
             Transform sparksRight = transform.GetChild(3);
             Transform sparksLeft = transform.GetChild(4);
@@ -135,7 +138,7 @@ public class EnemyGear : MonoBehaviour
                 {
                     return;
                 }
-                Debug.Log("end of path");
+                // Debug.Log("end of path");
                 pathIsEnded = true;
                 return;
             }
@@ -157,9 +160,14 @@ public class EnemyGear : MonoBehaviour
 
     private void Attack()
     {
-        if ((transform.position - target.transform.position).y < -0.04 && (transform.position - target.transform.position).y > -0.07 && 
-            ((transform.position - target.transform.position).x < attackRange && (transform.position - target.transform.position).x > -attackRange)) // if in range and level with player
+        if (Time.time > attackStart + attackLength && attacking)
+        {
+            attacking = false;
+        }
+        if (((transform.position - target.transform.position).y < -0.04 && (transform.position - target.transform.position).y > -0.07 && 
+            ((transform.position - target.transform.position).x < attackRange && (transform.position - target.transform.position).x > -attackRange)) || attacking) // if in range and level with player
             {
+            attacking = true;
             if ((transform.position - target.transform.position).x >= 0) // right/left check
             {
                 if (Time.time < attackStart + attackLength)

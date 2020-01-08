@@ -28811,6 +28811,7 @@ GameObject:
   - component: {fileID: 8764042792962595299}
   - component: {fileID: 8764042792962595297}
   - component: {fileID: 8764042792962595325}
+  - component: {fileID: 5713538032368381951}
   m_Layer: 0
   m_Name: EnemyGear
   m_TagString: Enemy
@@ -28922,3 +28923,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4.3
+--- !u!114 &5713538032368381951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8764042792962595296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedc880a883938a4cb1c14b6cc6ab0b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHealth: 100
+  currentHealth: 0
+  dead: 0
